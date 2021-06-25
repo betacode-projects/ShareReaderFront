@@ -6,4 +6,4 @@ steps:
   entrypoint: npm
   args: ['run', 'build']
 - name: gcr.io/cloud-builders/gsutil
-  args: ['rsync', '-d', '-r', '.', 'gs://share-reader-front/']
+  args: ['rsync', '-d', '-r', './dist/', 'gs://share-reader-front/']
