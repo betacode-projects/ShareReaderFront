@@ -3,7 +3,7 @@
         <div class="siteheader siteheader--expand-menu">
             <div class="siteheader__content container">
                 <a href="#" aria-current="page" class="siteheader__logo w-inline-block w--current">
-                    <img src="@/assets/img/logo.svg" alt="Sheaflick">
+                    <img src="@/assets/img/logo.png" alt="Sheaflick">
                 </a>
                 <div class="siteheader__nav__links">
                     <div class="siteheader__nav__links__content">
