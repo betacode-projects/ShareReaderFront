@@ -11,7 +11,7 @@ body {
 
 @font-face {
     font-family: logo;
-    src: url(../font/Party\ LET\ Plain.1.0.ttf);
+    src: url('~@/assets/font/Party\ LET\ Plain.1.0.ttf');
 }
 
 
