@@ -14,5 +14,4 @@ export default {
 @import "./assets/css/style.css";
 @import "./assets/css/responsive.css";
 @import "./assets/css/main.css";
->>>>>>> feature/#5
 </style>
