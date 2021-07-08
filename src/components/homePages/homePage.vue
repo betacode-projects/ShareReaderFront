@@ -52,11 +52,11 @@
   </div>
 </template>
 <script>
-import Header from '../headers/header.vue'
-import TopTitle from './topTitle.vue'
-import TopContainer from './topContainer.vue'
-import Container from './container.vue'
-import Footer from '../footers/footer.vue'
+import Header from '../headers/Header'
+import TopTitle from './topTitle'
+import TopContainer from './TopContainer'
+import Container from './Container'
+import Footer from '../footers/Footer'
 
 export default {
   name: 'homePage',

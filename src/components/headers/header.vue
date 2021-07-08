@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import SignUpLink from './signUpLink.vue'
-import SignInLink from './signInLink.vue'
+import SignUpLink from './SignUpLink'
+import SignInLink from './SignInLink'
 
 export default {
   name: 'header',
