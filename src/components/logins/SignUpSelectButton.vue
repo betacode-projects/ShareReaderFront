@@ -6,3 +6,6 @@ export default {
   name: 'SignUpSelectButton'
 }
 </script>
+<style scoped>
+@import "../../assets/css/login-style.css";
+</style>

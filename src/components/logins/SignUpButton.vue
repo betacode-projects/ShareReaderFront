@@ -1,9 +1,9 @@
 <template>
-  <button class="btn transparent" id="sign-in-btn">Sign in</button>
+  <input type="submit" class="btn" value="Sign up" />
 </template>
 <script>
 export default {
-  name: 'SignInSelectButton'
+  name: 'SignUpButton'
 }
 </script>
 <style scoped>
