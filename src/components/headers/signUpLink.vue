@@ -3,7 +3,7 @@
     <div class="siteheader__nav__section__label">
       <router-link to="/login">
         <a href="#" style="text-decoration: none;">
-          <div>アカウント作成</div>
+          <div v-bind:click="signUpMode">アカウント作成</div>
         </a>
       </router-link>
     </div>
@@ -11,7 +11,13 @@
 </template>
 <script>
 export default {
-  name: 'signUpLink'
+  name: 'signUpLink',
+  methods: {
+    signUpMode: function () {
+      this.$store.commit('changeTrueLoginMode')
+      console.log(this.$store.state.loginMode)
+    }
+  }
 }
 </script>
 <style scoped>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-bind:class="{ 'sign_up_mode': isSignUpMode }">
     <div class="forms-container">
       <div class="signin-signup">
         <SignInForm />
@@ -31,6 +31,11 @@ export default {
     SignUpForm,
     SignUpSelector,
     SignInSelector
+  },
+  data () {
+    return {
+      isSignUpMode: this.$store.state.loginMode
+    }
   }
 }
 </script>

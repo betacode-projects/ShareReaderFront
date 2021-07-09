@@ -3,7 +3,7 @@
     <div class="siteheader__nav__section__label">
       <router-link to="/login">
         <a style="text-decoration: none;">
-          <div>ログイン</div>
+          <div v-bind:click="signInMode">ログイン</div>
         </a>
       </router-link>
     </div>
@@ -11,7 +11,12 @@
 </template>
 <script>
 export default {
-  name: 'signUpLink'
+  name: 'signUpLink',
+  methods: {
+    signInMode: function () {
+      this.$store.commit('changeFalseLoginMode')
+    }
+  }
 }
 </script>
 <style scoped>
