@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+ol {
+    counter-reset:number; /*数字をリセット*/
+    list-style-type: none!important; /*数字を一旦消す*/
+    padding:0;
+    min-height: 800px;
+    max-height: 1000px;
+  }
+  ol li {
+    position: relative;
+    padding: 0.5em;
+    line-height: 1.5em;
+    background: #f1f8ff31;
+    border-left : solid 35px #5c9ee7;
+    margin-bottom: 5px;
+    word-break : break-all;
+  }
+  ol li:before{
+    /* 以下数字をつける */
+    position: absolute;
+    counter-increment: number;
+    content: counter(number);
+    /*数字のデザイン変える*/
+    display:inline-block;
+    color: white;
+    font-family: 'Avenir','Arial Black','Arial',sans-serif;
+    font-weight:bold;
+    font-size: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: -35px;
+    width: 35px;
+    height: 1em;
+    line-height: 1;
+    text-align: center;
+  }
+
+  .box29 {
+    margin: 2em 0;
+    background: #dcefff2d;
+    padding: 10px;
+    min-height: 800px;
+    max-height: 1000px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-radius:10px;
+    margin-top:-1px;
+    border : solid 1px silver; 
+}
+.box29 .box-title {
+    font-size: 1.2em;
+    background: transparent;
+    padding: 5px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    border-bottom: solid 1px silver; 
+}
+.box29 p {
+    padding: 15px 20px;
+    margin: 0;
+}
+
+.box30 {
+    margin: 2em 0;
+    background: #dcefff2d;
+    padding: 10px;
+    min-height: 200px;
+    border-radius:10px;
+    margin-top:-1px;
+    border : solid 1px silver; 
+    overflow: auto;
+}
+.box30 .box-title {
+    font-size: 1.2em;
+    background: transparent;
+    padding: 5px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+    border-bottom: solid 1px silver; 
+}
+.box30 p {
+    padding: 15px 20px;
+    margin: 0;
+}
+
+.chartbox {
+    margin: 2em 0;
+    background: #ffffffab;
+    padding: 10px;
+    min-height: 200px;
+    border-radius:10px;
+    margin-top:-1px;
+    border : solid 1px silver; 
+    overflow: auto;
+}
+.chartbox .box-title {
+    font-size: 1.2em;
+    background: transparent;
+    padding: 5px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+    border-bottom: solid 1px silver; 
+}
+.chartbox p {
+    padding: 15px 20px;
+    margin: 0;
+}
+
+.box31 {
+    margin: 0 auto;
+    background: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius:10px;
+    margin-top:-1px;
+    border : solid 1px silver; 
+    display: flex;
+    justify-content: center;
+}
+.box31 .box-title {
+    font-size: 1.2em;
+    background: transparent;
+    padding: 5px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    border-bottom: solid 1px silver; 
+}
+.box31 p {
+    padding: 15px 20px;
+    margin: 0;
+}
+
+
+.scroll-content {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.tab-wrap {
+	background: rgba(255, 255, 255, 0.212);
+	box-shadow: 0 0 5px rgba(0,0,0,.1);
+	display: flex;
+	flex-wrap: wrap;
+	overflow: hidden;
+	padding: 0 0 20px;
+    border-radius:10px;
+    border : solid 1px silver; 
+    margin-bottom: 20px;
+}
+
+.tab-label {
+  color: #000;
+	cursor: pointer;
+	flex: 1;
+	font-weight: bold;
+	order: -1;
+	padding: 12px 24px;
+	position: relative;
+	text-align: center;
+	transition: cubic-bezier(0.4, 0, 0.2, 1) .2s;
+	user-select: none;
+	white-space: nowrap;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.tab-label:hover {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.tab-switch:checked + .tab-label {
+	color: gray;
+}
+
+.tab-label::after {
+	background: gray;
+	bottom: 0;
+	content: '';
+	display: block;
+	height: 3px;
+	left: 0;
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+	transform: translateX(100%);
+	transition: cubic-bezier(0.4, 0, 0.2, 1) .2s 80ms;
+	width: 100%;
+	z-index: 1;
+}
+
+.tab-switch:checked ~ .tab-label::after {
+	transform: translateX(-100%);
+}
+
+.tab-switch:checked + .tab-label::after {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.tab-content {
+	height:0;
+	opacity:0;
+	padding: 0 20px;
+	pointer-events:none;
+	transform: translateX(-30%);
+	transition: transform .3s 80ms, opacity .3s 80ms;
+	width: 100%;
+}
+
+.tab-switch:checked ~ .tab-content {
+	transform: translateX(30%);
+}
+
+.tab-switch:checked + .tab-label + .tab-content {
+	height: auto;
+	opacity: 1;
+	order: 1;
+	pointer-events:auto;
+	transform: translateX(0);
+}
+
+.tab-wrap::after {
+	content: '';
+	height: 20px;
+	order: -1;
+	width: 100%;
+}
+
+.tab-switch {
+	display: none;
+}
+
+
+  table {
+    margin: 20px auto;
+    width: 100%;
+  }
+  .tbl-r02 th {
+    background: #5c9ee7;
+    border: solid 1px #ccc;
+    color: #fff;
+    padding: 10px;
+    width: 30%;
+  }
+  .tbl-r02 td {
+    border: solid 1px #ccc;
+    padding: 10px;
+    width: 70%;
+    word-break : break-all;
+  }
+  
+  @media screen and (max-width: 640px) {
+    .last td:last-child {
+      border-bottom: solid 1px #ccc;
+      width: 100%;
+    }
+    .tbl-r02 {
+      width: 100%;
+    }
+    .tbl-r02 th,
+    .tbl-r02 td {
+      border-bottom: none;
+      display: block;
+      width: 100%;
+    }
+  }
+  
+  
+  .text-center{
+    margin-top: 140px;
+  }
+
+
+
+  ol li {
+    opacity: 0;
+    animation-name: fadein-bottom;
+    animation-duration: 1.0s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+ }
+ @keyframes fadein-bottom {
+    0% {
+       opacity: 0;
+       transform: translateY(20px);
+    }
+    100% {
+       opacity: 1;
+       transform: translateY(0);
+    }
+ }
+
+
+ .cp_iptxt {
+    margin-top: 20px;
+	position: relative;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.cp_iptxt input[type='text'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: calc(100% - 20px);
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: rgb(224, 224, 224);
+	border: none;
+	border-bottom: 2px solid #e0e0e0;
+	background: transparent;
+    justify-content: center;
+    text-align: center;
+}
+.ef {
+    width: 100%;
+}
+.ef input[type='text']:focus {
+	border-bottom: 2px solid #5c9ee7;
+	outline: none;
+}
+
+.button-flex {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.button-flex a {
+    margin: 20px;
+}
