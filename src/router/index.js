@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import homePage from '@/components/homePages/homePage'
 import NotFoundComponent from '@/components/NotFound'
 
@@ -12,11 +11,6 @@ export default new Router({
       path: '/',
       name: 'homePage',
       component: homePage
-    },
-    {
-      path: '/helloworld',
-      name: 'HelloWorld',
-      component: HelloWorld
     },
     {
       path: '*',
