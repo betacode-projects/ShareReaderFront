@@ -1,18 +1,25 @@
 <template>
   <div class="siteheader__nav__section">
     <div class="siteheader__nav__section__label">
-      <a href="#" style="text-decoration: none;">
-        <div>ログイン</div>
-      </a>
+      <router-link to="/SignIn">
+        <a style="text-decoration: none;">
+          <div v-bind:click="signInMode">ログイン</div>
+        </a>
+      </router-link>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'signUpLink'
+  name: 'signUpLink',
+  methods: {
+    signInMode: function () {
+      this.$store.commit('changeFalseLoginMode')
+    }
+  }
 }
 </script>
-<style>
+<style scoped>
 @import "../../assets/css/fr.css";
 @import "../../assets/css/style.css";
 @import "../../assets/css/responsive.css";

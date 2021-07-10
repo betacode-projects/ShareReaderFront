@@ -27,7 +27,7 @@ export default {
   name: 'topContainer'
 }
 </script>
-<style>
+<style scoped>
 @import "../../assets/css/fr.css";
 @import "../../assets/css/style.css";
 @import "../../assets/css/responsive.css";

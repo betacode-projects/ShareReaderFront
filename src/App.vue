@@ -10,8 +10,9 @@ export default {
 }
 </script>
 <style>
-@import "./assets/css/fr.css";
-@import "./assets/css/style.css";
-@import "./assets/css/responsive.css";
-@import "./assets/css/main.css";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 </style>

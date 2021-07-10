@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import SignUpLink from './signUpLink.vue'
-import SignInLink from './signInLink.vue'
+import SignUpLink from './SignUpLink'
+import SignInLink from './SignInLink'
 
 export default {
   name: 'header',
@@ -35,7 +35,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 @import "../../assets/css/fr.css";
 @import "../../assets/css/style.css";
 @import "../../assets/css/responsive.css";
