@@ -36,11 +36,6 @@ export default new Router({
       }
     },
     {
-      path: '/helloworld',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-    {
       path: '*',
       name: 'NotFound',
       component: NotFoundComponent
