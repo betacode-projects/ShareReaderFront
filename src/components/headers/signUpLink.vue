@@ -1,7 +1,7 @@
 <template>
   <div class="siteheader__nav__section">
     <div class="siteheader__nav__section__label">
-      <router-link to="/login">
+      <router-link to="/SignUp">
         <a href="#" style="text-decoration: none;">
           <div v-bind:click="signUpMode">アカウント作成</div>
         </a>
