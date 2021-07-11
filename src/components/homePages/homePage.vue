@@ -23,7 +23,6 @@
                       </span>
                   </h2>
               </div>
-
               <div class="top-section-concept__content">
                   <div class="pay-easy-reasons">
                       <div class="be-easy-reason">
@@ -51,6 +50,7 @@
     <Footer />
   </div>
 </template>
+
 <script>
 import Header from '../headers/header.vue'
 import TopTitle from './topTitle.vue'
