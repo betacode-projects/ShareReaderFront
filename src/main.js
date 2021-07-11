@@ -5,7 +5,9 @@ import App from './App'
 import router from './router'
 import VModal from 'vue-js-modal'
 import store from './store'
+import VueCookies from 'vue-cookies'
 
+Vue.use(VueCookies)
 Vue.use(VModal)
 Vue.config.productionTip = false
 
