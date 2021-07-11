@@ -34,7 +34,7 @@ export default {
   methods: {
     show () {
       console.log(this.$modal)
-      this.$modal.show('modal-test')
+      this.$modal.show('show-qr')
     }
   }
 }

@@ -1,13 +1,15 @@
 <template>
-    <modal name="show-qr" :draggable="true" :resizable="true" width="85%" height="70%">
-        <div class="modal-header">
-            <h2>QRコード</h2>
-        </div>
-        <div class="modal-body">
-            <p>you're reading this text in a modal!</p>
-            <button v-on:click="hide">閉じる</button>
-        </div>
-    </modal>
+    <div>
+        <modal name="show-qr" width="50%" height="50%">
+            <div class="modal-header">
+                <h2>QRコード</h2>
+            </div>
+            <div class="modal-body">
+                <p>you're reading this text in a modal!</p>
+                <button v-on:click="hide">閉じる</button>
+            </div>
+        </modal>
+    </div>
 </template>
 
 <script>
@@ -16,7 +18,7 @@ export default {
   name: 'qrModal',
   methods: {
     hide () {
-      this.$modal.hide('modal-test')
+      this.$modal.hide('show-qr')
     }
   }
 }
