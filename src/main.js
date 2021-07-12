@@ -10,7 +10,7 @@ import VueCookies from 'vue-cookies'
 Vue.use(VueCookies)
 Vue.use(VModal)
 Vue.config.productionTip = false
-
+Vue.$cookies.config('7d')
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
