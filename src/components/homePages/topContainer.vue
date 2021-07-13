@@ -1,5 +1,6 @@
 <template>
   <div class="top-kv__text__detail">
+      <QrModal />
       <div class="top-kv__text__detail__intaraction-frame top-kv__text__detail__intaraction-frame--description">
           <h1 class="top-kv__text__description switch-style-hide-br loading-animation-enable top-title">
               QUICK・SHARE ・ UPLOAD<br/>Share ReaderはQRコードで<br>データ共有できるサービスです。
@@ -14,7 +15,7 @@
                   </a>
               </form>
               <form action="">
-                  <a href="" class="button-link store-badges__link w-inline-block middle">
+                  <a href="#" class="button-link store-badges__link w-inline-block middle" @click.prevent.stop="show">
                       <img src="@/assets/img/download.svg" alt="" width="160px">
                   </a>
               </form>
@@ -23,11 +24,22 @@
   </div>
 </template>
 <script>
+import QrModal from '@/components/modules/qrModal.vue'
+
 export default {
-  name: 'topContainer'
+  name: 'topContainer',
+  components: {
+    QrModal
+  },
+  methods: {
+    show () {
+      console.log(this.$modal)
+      this.$modal.show('show-qr')
+    }
+  }
 }
 </script>
-<style scoped>
+<style>
 @import "../../assets/css/fr.css";
 @import "../../assets/css/style.css";
 @import "../../assets/css/responsive.css";
