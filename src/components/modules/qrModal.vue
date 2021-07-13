@@ -3,7 +3,7 @@
         <modal name="show-qr" width="80%" height="400px">
             <div class="modal-header">
                 <h2>QRコード</h2>
-                <p name="subscript-qr">ファイルの送信者に、このQRコードを読み取らせてください</p>
+                <p class="subscript-qr">ファイルの送信者に、このQRコードを読み取らせてください</p>
             </div>
             <div class="modal-body">
                 <div class="qrcode">
@@ -76,7 +76,7 @@ export default {
     margin: 10px;
   }
 
-  .subscript-qr {
+  .modal-header .subscript-qr {
     text-align: center;
     margin: 5px;
   }
