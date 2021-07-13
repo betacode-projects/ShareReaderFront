@@ -76,7 +76,7 @@ export default {
     margin: 10px;
   }
 
-  .modal-header .subscript-qr {
+  .subscript-qr {
     text-align: center;
     margin: 5px;
   }
