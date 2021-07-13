@@ -1,4 +1,4 @@
-html, body {
+html, body, #home-body {
     font-family: 'Hiragino Sans', FP-HiraKakuProN-W3,  sans-serif; 
     background-color: whitesmoke;   
 }
@@ -197,32 +197,15 @@ body {
 
   
   
-.w-slider-dot{
-    width: 20px;
-    height: 2px;
-    background-color: #B8B8BC;
-}
-
-.w-slider-nav.w-round>div{
-    border-radius:0;
-}
-
-.w-slider-dot.w-active {
-    background-color: #2ad1ff;
-}
 
 .swiper-slide-active .kv-slide-ui__img{
     opacity: 1;
 }
       
-.swiper-slide-active .kv-slider-location__img {
-    transform: scale(1.2,1.2) translate3d(-5%,0,0);
-}
 
 
-
-body{
-    background-image: url(../img/security_SVG.svg);
+body, #home-body{
+    background-image: url('~@/assets/img/security_SVG.svg');
     background-size: 25%;
     background-position: top;
     background-repeat: no-repeat;

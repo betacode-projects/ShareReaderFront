@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="home-body">
     <Header />
     <div class="sitetop-hide-ui">
       <div class="top-kv">
