@@ -1,5 +1,6 @@
 export const URL = {
-  POST_TOKEN: 'http://localhost:3000/v1/api/token'
+  POST_TOKEN: 'http://localhost:3000/v1/api/token',
+  UPLOAD_FILE: 'http://localhost:3000/v1/api/file'
 }
 
 export const SENDER = {

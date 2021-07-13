@@ -8,8 +8,8 @@
       </div>
       <div class="top-kv__text__detail__intaraction-frame">
           <div id="yoko">
-              <form action="">
-                  <input type="file" id="fopen" style="display:none;">
+              <form action="" enctype="multipart/form-data">
+                  <input type="file" id="fopen" style="display:none;" @change="uploadFile">
                   <a href="Javascript:document.getElementById('fopen').click();" class="store-badges__link w-inline-block middle">
                       <img src="@/assets/img/upload.svg" alt="" width="160px">
                   </a>
@@ -25,6 +25,8 @@
 </template>
 <script>
 import QrModal from '@/components/modules/qrModal.vue'
+import axios from 'axios'
+import {RECEIVER, URL} from '../../define/config'
 
 export default {
   name: 'topContainer',
@@ -35,6 +37,20 @@ export default {
     show () {
       console.log(this.$modal)
       this.$modal.show('show-qr')
+    },
+
+    uploadFile (e) {
+      const params = new FormData()
+      params.append('file', e.target.files[0])
+      console.log(e.target.files[0])
+
+      axios.post(URL.UPLOAD_FILE, params).then((res) => {
+        console.log('success')
+        console.log(res)
+      }).catch((error) => {
+        console.log('error')
+        console.log(error)
+      })
     }
   }
 }
