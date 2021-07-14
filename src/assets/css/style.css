@@ -205,7 +205,7 @@ body {
 
 
 body, #home-body{
-    background-image: url('~@/assets/img/security_SVG.svg');
+    background-image: url('../img/security_SVG.svg');
     background-size: 25%;
     background-position: top;
     background-repeat: no-repeat;
