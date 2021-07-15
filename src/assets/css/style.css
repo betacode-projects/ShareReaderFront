@@ -3,7 +3,7 @@ html, body, #home-body {
     background-color: whitesmoke;   
 }
 
-body {
+body, #home-body {
     font-feature-settings: "palt";
     position:relative;
     overflow-x: hidden;    

@@ -1,5 +1,5 @@
 <template>
-  <div id="home-body">
+  <div id="home-body" v-bind:style="{ 'background-image' : 'url(' + securitySvg + ')' }">
     <Header />
     <div class="sitetop-hide-ui">
       <div class="top-kv">
@@ -56,6 +56,7 @@ import TopTitle from './topTitle'
 import TopContainer from './TopContainer'
 import Container from './Container'
 import Footer from '../footers/Footer'
+import image from '@/assets/img/security_SVG.svg'
 
 export default {
   name: 'homePage',
@@ -65,6 +66,11 @@ export default {
     TopContainer,
     Container,
     Footer
+  },
+  data: function () {
+    return {
+      securitySvg: image
+    }
   }
 }
 </script>
