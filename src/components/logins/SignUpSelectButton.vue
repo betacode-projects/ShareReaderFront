@@ -1,6 +1,7 @@
 <template>
   <button class="btn transparent" id="sign-up-btn" v-on:click="changeMode">Sign up</button>
 </template>
+
 <script>
 export default {
   name: 'SignUpSelectButton',
@@ -12,6 +13,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 @import "../../assets/css/login-style.css";
 </style>

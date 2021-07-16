@@ -18,6 +18,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import SignInForm from './SignInForm'
 import SignUpForm from './SignUpForm'
@@ -39,6 +40,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 @import "../../assets/css/login-style.css";
 </style>
