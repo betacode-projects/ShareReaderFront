@@ -9,9 +9,10 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
-  name: 'signUpLink',
+  name: 'SignUpLink',
   methods: {
     signInMode: function () {
       this.$store.commit('changeFalseLoginMode')
@@ -19,6 +20,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 @import "../../assets/css/fr.css";
 @import "../../assets/css/style.css";

@@ -5,6 +5,7 @@
     <SignInSelectButton />
   </div>
 </template>
+
 <script>
 import SignInSelectButton from './SignInSelectButton.vue'
 
@@ -15,6 +16,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 @import "../../assets/css/login-style.css";
 </style>
