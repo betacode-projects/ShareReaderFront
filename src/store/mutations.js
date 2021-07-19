@@ -4,6 +4,12 @@ const mutations = {
   },
   changeFalseLoginMode (state) {
     state.loginMode = false
+  },
+  changeFalseQrModalMode (state) {
+    state.qrModalMode = false
+  },
+  changeTrueQrModalMode (state) {
+    state.qrModalMode = true
   }
 }
 

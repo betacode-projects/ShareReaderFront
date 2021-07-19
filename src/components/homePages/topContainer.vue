@@ -13,11 +13,7 @@
             <img src="@/assets/img/upload.svg" alt="" width="160px">
           </a>
         </form>
-        <form action="">
-          <a href="" class="button-link store-badges__link w-inline-block middle">
-            <img src="@/assets/img/download.svg" alt="" width="160px">
-          </a>
-        </form>
+        <DownloadButton />
       </div>
     </div>
   </div>
@@ -25,11 +21,13 @@
 
 <script>
 import QrModal from '@/components/modules/qrModal.vue'
+import DownloadButton from './DownloadButton'
 
 export default {
   name: 'TopContainer',
   components: {
-    QrModal
+    QrModal,
+    DownloadButton
   },
   methods: {
     show () {
