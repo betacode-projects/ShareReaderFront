@@ -1,5 +1,5 @@
 <template>
-  <button class="button-link store-badges__link w-inline-block middle">
+  <button class="button-link store-badges__link w-inline-block middle" v-click="show()">
     <img src="@/assets/img/download.svg" alt="" width="160px">
   </button>
 </template>

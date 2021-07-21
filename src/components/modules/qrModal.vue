@@ -1,17 +1,15 @@
 <template>
-  <div>
-    <modal name="show-qr" width="80%" height="400px">
-      <div class="modal-header">
-        <h2>QRコード</h2>
-        <p class="subscript-qr">ファイルの送信者に、このQRコードを読み取らせてください</p>
+  <modal name="show-qr" width="80%" height="400px">
+    <div class="modal-header">
+      <h2>QRコード</h2>
+      <p class="subscript-qr">ファイルの送信者に、このQRコードを読み取らせてください</p>
+    </div>
+    <div class="modal-body">
+      <div class="qrcode">
+        <VueQrcode v-show="publicToken" :value="publicToken" :options="option" tag="img"></VueQrcode>
       </div>
-      <div class="modal-body">
-        <div class="qrcode">
-          <VueQrcode v-show="publicToken" :value="publicToken" :options="option" tag="img"></VueQrcode>
-        </div>
-      </div>
-    </modal>
-  </div>
+    </div>
+  </modal>
 </template>
 
 <script>
@@ -20,7 +18,7 @@ import axios from 'axios'
 import {URL, RECEIVER} from '../../define/config'
 
 export default {
-  name: 'qrModal',
+  name: 'QrModal',
   components: {
     VueQrcode
   },

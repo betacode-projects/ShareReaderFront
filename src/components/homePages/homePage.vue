@@ -48,6 +48,7 @@
         </div>
       </div>
     <Footer />
+    <QrModal v-bind:class="isQrModalMode? '.show-QR-modal' : '.none-QR-modal' " />
   </div>
 </template>
 
@@ -57,6 +58,7 @@ import TopTitle from './TopTitle'
 import TopContainer from './TopContainer'
 import Container from './Container'
 import Footer from '../footers/Footer'
+import QrModal from '../modules/QrModal'
 import image from '@/assets/img/security_SVG.svg'
 
 export default {
@@ -66,7 +68,8 @@ export default {
     TopTitle,
     TopContainer,
     Container,
-    Footer
+    Footer,
+    QrModal
   },
   methods: {
     onResize () {
@@ -74,6 +77,11 @@ export default {
         this.securitySvg = image
       } else {
         this.securitySvg = ''
+      }
+    },
+    computed: {
+      isQrModalMode: function () {
+        return this.$store.state.qrModalMode
       }
     }
   },
@@ -105,6 +113,14 @@ export default {
   #home-body {
     background-image: none;
   }
+}
+
+.show-QR-modal {
+  display: box;
+}
+
+.none-QR-modal {
+  display: none;
 }
 
 </style>
