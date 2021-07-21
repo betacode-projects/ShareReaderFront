@@ -1,5 +1,5 @@
 <template>
-  <button v-on:click="close()" class="close-btn">閉じる</button>
+  <button v-on:click="close()" class="btn btn-border">閉じる</button>
 </template>
 
 <script>
@@ -15,7 +15,16 @@ export default {
 </script>
 
 <style scoped>
-.close-btn {
-  text-align: center;
+@import "../../assets/css/bootstrap.css";
+
+.btn-border {
+  border: 2px solid #000;
+  border-radius: 0;
+  background: #fff;
+}
+
+.btn-border:hover {
+  color: #fff;
+  background: #000;
 }
 </style>

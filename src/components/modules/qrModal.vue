@@ -9,7 +9,9 @@
         <VueQrcode v-show="publicToken" :value="publicToken" :options="option" tag="img"></VueQrcode>
       </div>
     </div>
-    <CloseQrModalButton />
+    <div class="close-btn">
+      <CloseQrModalButton class="close-btn" />
+    </div>
   </modal>
 </template>
 
