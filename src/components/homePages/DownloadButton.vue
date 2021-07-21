@@ -1,17 +1,12 @@
 <template>
-  <button class="button-link store-badges__link w-inline-block middle" v-click="show()">
+  <button class="button-link store-badges__link w-inline-block middle" v-on:click="show()">
     <img src="@/assets/img/download.svg" alt="" width="160px">
   </button>
 </template>
 
 <script>
-import QrModal from '../modules/qrModal'
-
 export default {
   name: 'DownloadButton',
-  components: {
-    QrModal
-  },
   methods: {
     show () {
       console.log(this.$modal)
