@@ -16,6 +16,7 @@
   "dependencies": {
     "@chenfengyuan/vue-qrcode": "^1.0.2",
     "axios": "^0.21.1",
+    "phoenix": "^1.5.9",
     "vue": "^2.5.2",
     "vue-cookies": "^1.7.4",
     "vue-js-modal": "^2.0.0-rc.6",

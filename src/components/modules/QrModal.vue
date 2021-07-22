@@ -20,6 +20,14 @@ import VueQrcode from '@chenfengyuan/vue-qrcode'
 import CloseQrModalButton from './CloseQrModalButton'
 import axios from 'axios'
 import {URL, RECEIVER} from '../../define/config'
+import Phoenix from 'phoenix'
+
+const Socket = new Phoenix('', {params: {token: ''}})
+Socket.connect()
+let channel = Socket.channel('room:', {})
+channel.join()
+  .receive('ok', resp => { console.log('Joined successfully', resp) })
+  .receive('error', resp => { console.log('Unable to join', resp) })
 
 export default {
   name: 'QrModal',
@@ -31,7 +39,6 @@ export default {
     hide () {
       this.$modal.hide('show-qr')
     },
-
     reloadQrCode () {
       this.publicToken = this.$cookies.get(RECEIVER.PRIVATE_TOKEN)
     }
