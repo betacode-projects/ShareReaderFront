@@ -19,12 +19,12 @@
 import VueQrcode from '@chenfengyuan/vue-qrcode'
 import CloseQrModalButton from './CloseQrModalButton'
 import axios from 'axios'
-import {URL, RECEIVER} from '../../define/config'
-import Phoenix from 'phoenix'
+import { URL, RECEIVER } from '../../define/config'
+import { Socket } from 'phoenix'
 
-const Socket = new Phoenix('', {params: {token: ''}})
-Socket.connect()
-let channel = Socket.channel('room:', {})
+let socket = new Socket()
+socket.connect(process.env.SOCKET_URL)
+let channel = socket.channel('room:' + this.$cookies.get(RECEIVER.PUBLIC_TOKEN), {})
 channel.join()
   .receive('ok', resp => { console.log('Joined successfully', resp) })
   .receive('error', resp => { console.log('Unable to join', resp) })
