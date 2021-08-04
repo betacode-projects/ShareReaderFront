@@ -7,11 +7,13 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
-  name: 'myPageLink'
+  name: 'MyPageLink'
 }
 </script>
+
 <style scoped>
 @import "../../assets/css/fr.css";
 @import "../../assets/css/style.css";

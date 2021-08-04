@@ -4,11 +4,13 @@
     <input type="text" placeholder="Username" />
   </div>
 </template>
+
 <script>
 export default {
   name: 'UserNameField'
 }
 </script>
+
 <style scoped>
 @import "../../assets/css/login-style.css";
 </style>

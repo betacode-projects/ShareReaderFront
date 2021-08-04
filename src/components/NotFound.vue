@@ -316,6 +316,7 @@
     </div>
   </div>
 </template>
+
 <style scoped>
   body{
     background-color: #F5F5F5;

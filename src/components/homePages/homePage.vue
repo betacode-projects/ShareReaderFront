@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="home-body" v-bind:style="{ 'background-image' : 'url(' + securitySvg + ')' }">
     <Header />
     <div class="sitetop-hide-ui">
       <div class="top-kv">
@@ -29,7 +29,7 @@
                 <h3 class="be-easy-reason__index switch-show-br use-app">ファイルをダウンロード</h3>
                 <div class="pay-easy-reason__text">
                 <div class="be-easy-reason__img-area"><img src="@/assets/img/use-qr.jpg" loading="lazy" sizes="(max-width: 479px) 93vw, (max-width: 991px) 96vw, (max-width: 1439px) 55vw, 791px" srcset="@/assets/img/use-qr.jpg 1080w, @/assets/img/use-qr.jpg 1600w, @/assets/img/use-qr.jpg 2000w" alt="" class="be-easy-reason__img" /></div>
-                    <p>説明</p>
+                  <p>説明</p>
                   <div class="be-easy-reason__description be-easy-reason__description--prepaid">
                   </div>
                 </div>
@@ -50,21 +50,43 @@
     <Footer />
   </div>
 </template>
+
 <script>
 import Header from '../headers/Header'
-import TopTitle from './topTitle'
+import TopTitle from './TopTitle'
 import TopContainer from './TopContainer'
 import Container from './Container'
 import Footer from '../footers/Footer'
+import image from '@/assets/img/security_SVG.svg'
 
 export default {
-  name: 'homePage',
+  name: 'HomePage',
   components: {
     Header,
     TopTitle,
     TopContainer,
     Container,
     Footer
+  },
+  methods: {
+    onResize () {
+      if (window.innerWidth > 979) {
+        this.securitySvg = image
+      } else {
+        this.securitySvg = ''
+      }
+    }
+  },
+  created () {
+    window.addEventListener('resize', this.onResize)
+  },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.onResize)
+  },
+  data: function () {
+    return {
+      securitySvg: image
+    }
   }
 }
 </script>
@@ -74,4 +96,15 @@ export default {
 @import "../../assets/css/style.css";
 @import "../../assets/css/responsive.css";
 @import "../../assets/css/main.css";
+
+#home-body {
+  background-image: url('~@/assets/img/security_SVG.svg');
+}
+
+@media screen and (max-width: 979px) {
+  #home-body {
+    background-image: none;
+  }
+}
+
 </style>
