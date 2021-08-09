@@ -1,5 +1,5 @@
 <template>
-  <modal name="show-qr" width="80%" height="400px">
+  <modal name="show-qr" @before-open="startConnection" @closed="stopConnection" width="80%" height="400px">
     <div class="modal-header">
       <h2>QRコード</h2>
       <p class="subscript-qr">ファイルの送信者に、このQRコードを読み取らせてください</p>
@@ -22,12 +22,12 @@ import axios from 'axios'
 import { URL, RECEIVER } from '../../define/config'
 import { Socket } from 'phoenix'
 
-let socket = new Socket()
-socket.connect(process.env.SOCKET_URL)
-let channel = socket.channel('room:' + this.$cookies.get(RECEIVER.PUBLIC_TOKEN), {})
-channel.join()
-  .receive('ok', resp => { console.log('Joined successfully', resp) })
-  .receive('error', resp => { console.log('Unable to join', resp) })
+const socketUrl = process.env.SOCKET_URL + '/socket'
+let socket = new Socket(socketUrl, {
+  logger: (kind, msg, data) => { console.log(`${kind}: ${msg}`, data) }
+})
+socket.connect()
+let channel = null
 
 export default {
   name: 'QrModal',
@@ -41,6 +41,27 @@ export default {
     },
     reloadQrCode () {
       this.publicToken = this.$cookies.get(RECEIVER.PRIVATE_TOKEN)
+    },
+    startConnection () {
+      channel = socket.channel('room:' + this.$cookies.get(RECEIVER.PUBLIC_TOKEN), {})
+      channel.join()
+        .receive('ok', resp => { console.log('Joined successfully', resp) })
+        .receive('error', resp => { console.log('Unable to join', resp) })
+
+      channel.on('downloaded_alert', payload => {
+        axios.get(URL.process.env.API_URL + 'file?sender=' + payload.body.private_token + '&receiver=' + RECEIVER.PRIVATE_TOKEN).then(res => {
+          console.log(res)
+
+          /*
+          * socket通信が成功して相手から送られてきたプライベートトークンをもとにファイルダウンロードのapiを実行
+          * ここにファイルダウンロードのレスポンスを記述してね☆
+          */
+        })
+      })
+    },
+    stopConnection () {
+      console.log('stopConnection function started!!')
+      // channel.onClose((e) => { console.log(`closed ${e}`) })
     }
   },
   data () {
