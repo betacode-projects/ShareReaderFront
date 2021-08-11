@@ -5,6 +5,7 @@
     <SignUpSelectButton />
   </div>
 </template>
+
 <script>
 import SignUpSelectButton from './SignUpSelectButton'
 
@@ -15,6 +16,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 @import "../../assets/css/login-style.css";
 </style>

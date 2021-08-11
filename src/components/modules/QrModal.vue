@@ -80,7 +80,7 @@ export default {
     }
   },
   mounted () {
-    const privateToken = this.$cookies.get(RECEIVER.PRIVATE_TOKEN) || ''
+    let privateToken = this.$cookies.get(RECEIVER.PRIVATE_TOKEN) || ''
     console.log(this.$cookies)
     console.log('private: ' + privateToken)
 
@@ -93,7 +93,6 @@ export default {
     }).catch(err => {
       console.log(err)
     })
-    axios.defaults.headers.common = {}
   }
 }
 

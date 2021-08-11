@@ -9,6 +9,7 @@
       <SocialLogin />
   </form>
 </template>
+
 <script>
 import UserNameField from './UserNameField'
 import EmailField from './EmailField'
@@ -27,6 +28,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 @import "../../assets/css/login-style.css";
 </style>
