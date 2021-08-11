@@ -15,6 +15,7 @@
         </form>
         <DownloadButton />
       </div>
+      <p style="text-align: center;">{{status}}</p>
     </div>
   </div>
 </template>
@@ -31,10 +32,16 @@ export default {
     QrModal,
     DownloadButton
   },
+  data () {
+    return {
+      status: ''
+    }
+  },
   methods: {
     uploadFile (e) {
       e.preventDefault()
 
+      this.status = 'ファイルをアップロード中...'
       const params = new FormData()
       params.append('file', e.target.files[0])
       console.log(e.target.files[0])
@@ -47,6 +54,7 @@ export default {
 
         window.location.href = '#/dashboard'
       }).catch((error) => {
+        this.status = 'エラーが発生しました'
         console.log('error')
         console.log(error)
       })
