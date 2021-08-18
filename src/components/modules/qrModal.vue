@@ -24,7 +24,7 @@ import { Socket } from 'phoenix'
 
 const socketUrl = process.env.SOCKET_URL + '/socket'
 let socket = new Socket(socketUrl, {
-  logger: (kind, msg, data) => { console.log(`${kind}: ${msg}`, data) }
+  logger: (kind, msg, data) => console.log(`${kind}: ${msg}`, data)
 })
 socket.connect()
 let channel = null
@@ -45,8 +45,8 @@ export default {
     startConnection () {
       channel = socket.channel('room:' + this.$cookies.get(RECEIVER.PUBLIC_TOKEN), {})
       channel.join()
-        .receive('ok', resp => { console.log('Joined successfully', resp) })
-        .receive('error', resp => { console.log('Unable to join', resp) })
+        .receive('ok', resp => console.log('Joined successfully', resp))
+        .receive('error', resp => console.log('Unable to join', resp))
 
       channel.on('downloaded_alert', payload => {
         axios.get(URL.process.env.API_URL + 'file?sender=' + payload.body.private_token + '&receiver=' + RECEIVER.PRIVATE_TOKEN).then(res => {
@@ -61,7 +61,7 @@ export default {
     },
     stopConnection () {
       console.log('stopConnection function started!!')
-      // channel.onClose((e) => { console.log(`closed ${e}`) })
+      channel.onClose((e) => console.log(`closed ${e}`))
     }
   },
   data () {
@@ -80,7 +80,7 @@ export default {
     }
   },
   mounted () {
-    const privateToken = this.$cookies.get(RECEIVER.PRIVATE_TOKEN) || ''
+    let privateToken = this.$cookies.get(RECEIVER.PRIVATE_TOKEN) || ''
     console.log(this.$cookies)
     console.log('private: ' + privateToken)
 
@@ -93,7 +93,6 @@ export default {
     }).catch(err => {
       console.log(err)
     })
-    axios.defaults.headers.common = {}
   }
 }
 

@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { Socket } from 'phoenix'
 
 export default {
   name: 'QrcodeReader',
@@ -14,8 +15,32 @@ export default {
     }
   },
   methods: {
-    onScanSuccess (data) {
-      // ここに読み取り後の処理を書く
+    async onScanSuccess (data) {
+      // 1. dataの形式チェック
+      if (!this.checkTokenFormat(data)) {
+        return console.log('do not match format')
+      }
+
+      // 2. トークンをroom_idとしてsocket通信
+      const socketUrl = process.env.SOCKET_URL + '/socket'
+      let socket = new Socket(socketUrl, {
+        logger: (kind, msg, data) => console.log(`${kind}: ${msg}`, data)
+      })
+      socket.connect()
+      let channel = socket.channel('room:' + data, {})
+      channel.join()
+        .receive('ok', resp => console.log('Joined successfully', resp))
+        .receive('error', resp => console.log('Unable to join', resp))
+
+      // 3. downloadのトリガーのアクションを投げる
+      channel.push('download_alert', this.$cookies.get())
+
+      // 4. disconnect
+      channel.onClose((e) => console.log(`closed ${e}`))
+      socket.disconnect((e) => console.log(`disconnect ${e}`), 200, 'Processing is complete')
+    },
+    checkTokenFormat (token) {
+      return token.length() === 32
     }
   },
   mounted () {
