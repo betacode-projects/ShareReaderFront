@@ -6,6 +6,7 @@
 
 <script>
 import { Socket } from 'phoenix'
+import { SENDER } from '../../define/config'
 
 export default {
   name: 'QrcodeReader',
@@ -33,7 +34,7 @@ export default {
         .receive('error', resp => console.log('Unable to join', resp))
 
       // 3. downloadのトリガーのアクションを投げる
-      channel.push('download_alert', this.$cookies.get())
+      channel.push('download_alert', {publicToken: this.$cookies.get(SENDER.PUBLIC_TOKEN)})
 
       // 4. disconnect
       channel.onClose((e) => console.log(`closed ${e}`))

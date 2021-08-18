@@ -21,6 +21,7 @@ import CloseQrModalButton from './CloseQrModalButton'
 import axios from 'axios'
 import { URL, RECEIVER } from '../../define/config'
 import { Socket } from 'phoenix'
+import { saveAs } from 'file-saver'
 
 const socketUrl = process.env.SOCKET_URL + '/socket'
 let socket = new Socket(socketUrl, {
@@ -49,19 +50,18 @@ export default {
         .receive('error', resp => console.log('Unable to join', resp))
 
       channel.on('downloaded_alert', payload => {
-        axios.get(URL.process.env.API_URL + 'file?sender=' + payload.body.private_token + '&receiver=' + RECEIVER.PRIVATE_TOKEN).then(res => {
-          console.log(res)
-
-          /*
-          * socket通信が成功して相手から送られてきたプライベートトークンをもとにファイルダウンロードのapiを実行
-          * ここにファイルダウンロードのレスポンスを記述してね☆
-          */
+        console.log('body.publicToken -> ' + payload.body.publicToken)
+        axios.get(URL.process.env.API_URL + 'file?sender=' + payload.body.publicToken + '&receiver=' + RECEIVER.PRIVATE_TOKEN).then(async res => {
+          const fileName = await res.headers['Content-disposition'].replace((/attachment; filename="(.*)"/u), '$1')
+          console.log('fileName -> ' + fileName)
+          saveAs(res.data, fileName)
         })
       })
     },
     stopConnection () {
       console.log('stopConnection function started!!')
       channel.onClose((e) => console.log(`closed ${e}`))
+      socket.disconnect((e) => console.log(`disconnect ${e}`), 200, 'Processing is complete')
     }
   },
   data () {
