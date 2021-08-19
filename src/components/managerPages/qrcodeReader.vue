@@ -17,6 +17,7 @@ export default {
   },
   methods: {
     async onScanSuccess (data) {
+      this.html5QrcodeScanner.clear()
       // 1. dataの形式チェック
       if (!this.checkTokenFormat(data)) {
         return console.log('do not match format')
@@ -28,20 +29,36 @@ export default {
         logger: (kind, msg, data) => console.log(`${kind}: ${msg}`, data)
       })
       socket.connect()
-      let channel = socket.channel('room:' + data, {})
+      const channel = socket.channel('room:' + data, {})
       channel.join()
         .receive('ok', resp => console.log('Joined successfully', resp))
         .receive('error', resp => console.log('Unable to join', resp))
 
-      // 3. downloadのトリガーのアクションを投げる
+      /**
+       * 3. downloadのトリガーのアクションを投げる
+       * 4. disconnect
+       */
       channel.push('download_alert', {publicToken: this.$cookies.get(SENDER.PUBLIC_TOKEN)})
-
-      // 4. disconnect
-      channel.onClose((e) => console.log(`closed ${e}`))
-      socket.disconnect((e) => console.log(`disconnect ${e}`), 200, 'Processing is complete')
+        .receive('ok', payload => {
+          console.log('phoenix replied:', payload)
+          this.disconnect(channel, socket)
+        })
+        .receive('error', err => {
+          console.log('phoenix errored', err)
+          this.disconnect(channel, socket)
+        })
+        .receive('timeout', () => {
+          console.log('timed out pushing')
+          this.disconnect(channel, socket)
+        })
     },
     checkTokenFormat (token) {
-      return token.length() === 32
+      return token.length === 32
+    },
+    disconnect (channel, socket) {
+      // 4. disconnect
+      channel.onClose((e) => console.log(`closed ${e}`))
+      socket.disconnect((e) => console.log(`disconnect ${e}`), 3000, 'Processing is complete')
     }
   },
   mounted () {

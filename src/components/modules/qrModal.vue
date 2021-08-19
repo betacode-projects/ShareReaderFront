@@ -41,7 +41,7 @@ export default {
       this.$modal.hide('show-qr')
     },
     reloadQrCode () {
-      this.publicToken = this.$cookies.get(RECEIVER.PRIVATE_TOKEN)
+      this.publicToken = this.$cookies.get(RECEIVER.PUBLIC_TOKEN)
     },
     startConnection () {
       channel = socket.channel('room:' + this.$cookies.get(RECEIVER.PUBLIC_TOKEN), {})
@@ -49,9 +49,12 @@ export default {
         .receive('ok', resp => console.log('Joined successfully', resp))
         .receive('error', resp => console.log('Unable to join', resp))
 
-      channel.on('downloaded_alert', payload => {
-        console.log('body.publicToken -> ' + payload.body.publicToken)
-        axios.get(URL.process.env.API_URL + 'file?sender=' + payload.body.publicToken + '&receiver=' + RECEIVER.PRIVATE_TOKEN).then(async res => {
+      channel.on('download_alert', payload => {
+        console.log('body.publicToken -> ' + payload.publicToken)
+        const apiUrl = URL.process.env.API_URL + 'file?sender=' + payload.publicToken + '&receiver=' + RECEIVER.PRIVATE_TOKEN
+        console.log('api url -> ' + apiUrl)
+        axios.get(apiUrl).then(async res => {
+          console.log(res)
           const fileName = await res.headers['Content-disposition'].replace((/attachment; filename="(.*)"/u), '$1')
           console.log('fileName -> ' + fileName)
           saveAs(res.data, fileName)
