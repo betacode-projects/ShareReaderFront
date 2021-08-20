@@ -21,10 +21,11 @@ import CloseQrModalButton from './CloseQrModalButton'
 import axios from 'axios'
 import { URL, RECEIVER } from '../../define/config'
 import { Socket } from 'phoenix'
+import { saveAs } from 'file-saver'
 
 const socketUrl = process.env.SOCKET_URL + '/socket'
 let socket = new Socket(socketUrl, {
-  logger: (kind, msg, data) => { console.log(`${kind}: ${msg}`, data) }
+  logger: (kind, msg, data) => console.log(`${kind}: ${msg}`, data)
 })
 socket.connect()
 let channel = null
@@ -40,28 +41,27 @@ export default {
       this.$modal.hide('show-qr')
     },
     reloadQrCode () {
-      this.publicToken = this.$cookies.get(RECEIVER.PRIVATE_TOKEN)
+      this.publicToken = this.$cookies.get(RECEIVER.PUBLIC_TOKEN)
     },
     startConnection () {
       channel = socket.channel('room:' + this.$cookies.get(RECEIVER.PUBLIC_TOKEN), {})
       channel.join()
-        .receive('ok', resp => { console.log('Joined successfully', resp) })
-        .receive('error', resp => { console.log('Unable to join', resp) })
+        .receive('ok', resp => console.log('Joined successfully', resp))
+        .receive('error', resp => console.log('Unable to join', resp))
 
-      channel.on('downloaded_alert', payload => {
-        axios.get(URL.process.env.API_URL + 'file?sender=' + payload.body.private_token + '&receiver=' + RECEIVER.PRIVATE_TOKEN).then(res => {
-          console.log(res)
-
-          /*
-          * socket通信が成功して相手から送られてきたプライベートトークンをもとにファイルダウンロードのapiを実行
-          * ここにファイルダウンロードのレスポンスを記述してね☆
-          */
+      channel.on('download_alert', payload => {
+        axios.get(process.env.API_URL + '/file?sender=' + payload.publicToken + '&receiver=' + this.$cookies.get(RECEIVER.PRIVATE_TOKEN), {responseType: 'blob'}).then(async res => {
+          console.log(res.headers)
+          const fileName = await res.headers['content-disposition'].replace((/attachment; filename="(.*)"/u), '$1')
+          console.log('fileName -> ' + decodeURI(fileName))
+          saveAs(res.data, decodeURI(fileName))
         })
       })
     },
     stopConnection () {
       console.log('stopConnection function started!!')
-      // channel.onClose((e) => { console.log(`closed ${e}`) })
+      channel.onClose((e) => console.log(`closed ${e}`))
+      socket.disconnect((e) => console.log(`disconnect ${e}`), 200, 'Processing is complete')
     }
   },
   data () {
