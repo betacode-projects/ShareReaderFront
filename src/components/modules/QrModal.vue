@@ -53,8 +53,8 @@ export default {
         axios.get(process.env.API_URL + '/file?sender=' + payload.publicToken + '&receiver=' + this.$cookies.get(RECEIVER.PRIVATE_TOKEN), {responseType: 'blob'}).then(async res => {
           console.log(res.headers)
           const fileName = await res.headers['content-disposition'].replace((/attachment; filename="(.*)"/u), '$1')
-          console.log('fileName -> ' + fileName)
-          saveAs(res.data, fileName)
+          console.log('fileName -> ' + decodeURI(fileName))
+          saveAs(res.data, decodeURI(fileName))
         })
       })
     },
