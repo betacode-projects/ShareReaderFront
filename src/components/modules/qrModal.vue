@@ -22,7 +22,6 @@ import CloseQrModalButton from './CloseQrModalButton'
 import axios from 'axios'
 import { URL, RECEIVER } from '../../define/config'
 import { Socket } from 'phoenix'
-// import { saveAs } from 'file-saver'
 
 const socketUrl = process.env.SOCKET_URL + '/socket'
 let socket = new Socket(socketUrl, {
