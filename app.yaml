@@ -1,12 +1,15 @@
 runtime: php55
 
-service: share-reader-web
 threadsafe: true
 
 handlers:
 - url: /
   static_files: dist/index.html
   upload: dist/index.html
+
+- url: /(.*)
+  static_files: dist/\1
+  upload: dist/(.*)
 
 skip_files:
 - node_modules/
