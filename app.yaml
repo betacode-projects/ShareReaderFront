@@ -1,0 +1,30 @@
+runtime: php55
+
+service: share-reader-web
+threadsafe: true
+
+handlers:
+- url: /
+  static_files: dist/index.html
+  upload: dist/index.html
+
+skip_files:
+- node_modules/
+- asets/
+- build/
+- config/
+- doc/
+- src/
+- static/
+- test/
+- .babelrc
+- .editorconfig
+- .eslintignore
+- .eslintrc.js
+- .gitignore
+- .postcssrc.js
+- cloudbuild.yaml
+- index.html
+- package-lock.json
+- package.json
+- README.md
