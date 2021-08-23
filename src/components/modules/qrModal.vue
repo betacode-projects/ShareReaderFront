@@ -59,7 +59,7 @@ export default {
     stopConnection () {
       console.log('stopConnection function started!!')
       channel.onClose((e) => console.log(`closed ${e}`))
-      socket.disconnect((e) => console.log(`disconnect ${e}`), 200, 'Processing is complete')
+      socket.disconnect((e) => console.log(`disconnect ${e}`), 3000, 'Processing is complete')
     }
   },
   data () {
