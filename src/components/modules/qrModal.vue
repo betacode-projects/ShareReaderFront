@@ -11,6 +11,7 @@
     </div>
     <div class="close-btn">
       <CloseQrModalButton class="close-btn" />
+      <a id="download-bt" href="" style="display:none" download></a>
     </div>
   </modal>
 </template>
@@ -21,7 +22,6 @@ import CloseQrModalButton from './CloseQrModalButton'
 import axios from 'axios'
 import { URL, RECEIVER } from '../../define/config'
 import { Socket } from 'phoenix'
-import { saveAs } from 'file-saver'
 
 const socketUrl = process.env.SOCKET_URL + '/socket'
 let socket = new Socket(socketUrl, {
@@ -50,12 +50,10 @@ export default {
         .receive('error', resp => console.log('Unable to join', resp))
 
       channel.on('download_alert', payload => {
-        axios.get(process.env.API_URL + '/file?sender=' + payload.publicToken + '&receiver=' + this.$cookies.get(RECEIVER.PRIVATE_TOKEN), {responseType: 'blob'}).then(async res => {
-          console.log(res.headers)
-          const fileName = await res.headers['content-disposition'].replace((/attachment; filename="(.*)"/u), '$1')
-          console.log('fileName -> ' + decodeURI(fileName))
-          saveAs(res.data, decodeURI(fileName))
-        })
+        this.downloadUrl = process.env.API_URL + '/file?sender=' + payload.publicToken + '&receiver=' + this.$cookies.get(RECEIVER.PRIVATE_TOKEN)
+        console.log(this.downloadUrl)
+        document.getElementById('download-bt').setAttribute('href', this.downloadUrl)
+        document.getElementById('download-bt').click()
       })
     },
     stopConnection () {
@@ -67,6 +65,7 @@ export default {
   data () {
     return {
       publicToken: '',
+      downloadUrl: 'mog.html',
       option: {
         errorCorrectionLevel: 'H',
         maskPattern: 0,
