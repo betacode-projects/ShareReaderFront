@@ -45,7 +45,7 @@ export default {
     },
     startConnection () {
       channel = socket.channel('room:' + this.$cookies.get(RECEIVER.PUBLIC_TOKEN), {})
-      channel.join()
+      channel.join(1800000)
         .receive('ok', resp => console.log('Joined successfully', resp))
         .receive('error', resp => console.log('Unable to join', resp))
 
