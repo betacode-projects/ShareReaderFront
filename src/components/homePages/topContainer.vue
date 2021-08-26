@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import QrModal from '@/components/modulesqrModal'
+import QrModal from '@/components/modules/qrModal'
 import DownloadButton from './DownloadButton'
 import {URL, SENDER} from '../../define/config'
 import axios from 'axios'
