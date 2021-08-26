@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Header from '../headers/Header'
-import Footer from '../footers/Footer'
+import Header from '../headers/header'
+import Footer from '../footers/footer'
 import Container from './dashboardMain'
 
 export default {

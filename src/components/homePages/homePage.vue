@@ -53,12 +53,12 @@
 </template>
 
 <script>
-import Header from '../headers/Header'
-import TopTitle from './TopTitle'
-import TopContainer from './TopContainer'
-import Container from './Container'
-import Footer from '../footers/Footer'
-import QrModal from '../modules/QrModal'
+import Header from '../headers/header'
+import TopTitle from './topTitle'
+import TopContainer from './topContainer'
+import Container from './container'
+import Footer from '../footers/footer'
+import QrModal from '../modules/qrModal'
 import image from '@/assets/img/security_SVG.svg'
 
 export default {
