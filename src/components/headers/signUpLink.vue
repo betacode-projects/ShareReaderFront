@@ -9,9 +9,10 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
-  name: 'signUpLink',
+  name: 'SignUpLink',
   methods: {
     signUpMode: function () {
       this.$store.commit('changeTrueLoginMode')

@@ -14,9 +14,10 @@
 
 <script>
 export default {
-  name: 'footer'
+  name: 'Footer'
 }
 </script>
+
 <style scoped>
 @import "../../assets/css/style.css";
 @import "../../assets/css/responsive.css";
