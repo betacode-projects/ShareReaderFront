@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import SignUpLink from './SignUpLink'
-import SignInLink from './SignInLink'
+import SignUpLink from './signUpLink'
+import SignInLink from './signInLink'
 
 export default {
   name: 'Header',
